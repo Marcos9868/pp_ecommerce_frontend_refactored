@@ -1,0 +1,23 @@
+name: Homolog CI
+on:
+  push:
+    branches: [ homolog ]
+  pull_request:
+    branches: [ homolog ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v3
+      - name: Instalar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+      - name: Instalar dependências
+        run: npm ci
+      - name: Rodar linter
+        run: npm run lint
+      - name: Build do projeto
+        run: npm run build
