@@ -1,9 +1,11 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { ShoppingCart, LogIn } from 'lucide-react';
+import { LoginModal } from '../loginModal';
 
 export const Header: React.FC = () => {
+  const [showLogin, setShowLogin] = useState(false);
   return (
     <>
       <header className="w-full h-[100px] bg-white shadow-md px-6 py-4 flex flex-wrap items-center justify-between gap-4">
@@ -34,12 +36,15 @@ export const Header: React.FC = () => {
             <ShoppingCart size={20} />
             Carrinho
           </button>
-          <button className="flex items-center gap-2 px-4 py-2 border border-green-600 text-green-600 rounded-lg hover:bg-green-50 transition">
+          <button
+            onClick={() => setShowLogin(true)}
+            className="flex items-center gap-2 px-4 py-2 border border-green-600 text-green-600 rounded-lg hover:bg-green-50 transition">
             <LogIn size={20} />
             Login
           </button>
         </div>
       </header>
+      <LoginModal isOpen={showLogin} onClose={() => setShowLogin(false)}/>
     </>
   );
 };

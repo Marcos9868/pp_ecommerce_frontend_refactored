@@ -1,4 +1,5 @@
 "use client"
+import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { Hero } from "@/components/heroBanner";
 import { IProduct } from "@/components/productCard/types";
@@ -76,6 +77,7 @@ export default function Home() {
       <Header />
       <Hero products={destaqueProdutos}/>
       <ProductGrid products={mockProducts}/>
+      <Footer />
     </main>
   );
 }
